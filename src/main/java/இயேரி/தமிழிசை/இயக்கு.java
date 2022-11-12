@@ -131,11 +131,11 @@ public class இயக்கு implements JMC {
 
 
 
-        File f = new File("/Users/durai/Google Drive/கீர்த்தனைகள்/அம்பரசிதம்பரசதானந்தமே.json");
+      /*  File f = new File("/Users/durai/Google Drive/கீர்த்தனைகள்/அம்பரசிதம்பரசதானந்தமே.json");
         FileInputStream fio = new FileInputStream(f);
         byte[] as = fio.readAllBytes();
-
-        கீர்த்தனை  கீர்த்தனைமாறி  = gson.fromJson(new String(as), கீர்த்தனை.class);
+*/
+        கீர்த்தனை  கீர்த்தனைமாறி  = gson.fromJson(கீர்த்தனை1, கீர்த்தனை.class);
         அச்சு(gson.toJson(கீர்த்தனைமாறி));
 
         try {
@@ -300,7 +300,7 @@ public class இயக்கு implements JMC {
         score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், 15 );
         score.setTimeSignature(8, 8);
 
-        score.setTimeSignature(8, 8);
+        //score.setTimeSignature(8, 8);
 
         for (பாடல்  பாடல்: கீர்த்தனைமாறி.கீர்த்தனை) {
             String சுரம் = "ச";
