@@ -1,6 +1,5 @@
 package இயேரி.தமிழிசை;
 
-import com.google.common.base.Strings;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,30 +8,27 @@ import jm.music.data.Note;
 import jm.music.data.Part;
 import jm.music.data.Phrase;
 import jm.music.data.Score;
-import jm.music.tools.Mod;
 import jm.util.Play;
 import jm.util.Write;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static இயேரி.தமிழிசை.பயன்பாடுகள்.அச்சு;
 import static இயேரி.தமிழிசை.பயன்பாடுகள்.வெற்றிடமா;
 
 public class இயக்கு implements JMC {
 
-    static  Gson gson = new GsonBuilder()
+    static Gson gson = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .setPrettyPrinting()
             .create();
 
 
-    static  String கீர்த்தனை1 = "  {\n" +
+    static String கீர்த்தனை1 = "  {\n" +
+            " \"பெயர்\":\"ரிஷபப்பிரியா-சீர்காழி\"," +
+
             "  \t\"வகை\" : \"கீர்த்தனை\",\n" +
             "  \t\"இயற்றியவர்\" : \"சீர்காழி முத்துத்தாண்டவர்\",\n" +
             "  \t\"இராகம்\" : \"ரிஷபப்பிரியா\",\n" +
@@ -134,7 +130,35 @@ public class இயக்கு implements JMC {
       /*  File f = new File("/Users/durai/Google Drive/கீர்த்தனைகள்/அம்பரசிதம்பரசதானந்தமே.json");
         FileInputStream fio = new FileInputStream(f);
         byte[] as = fio.readAllBytes();
+        
+            குரல் ச;
+    துத்தம் ரி;
+    கைக்கிளை க;
+    உழை ம;
+    இளி ப;
+    விளரி த;
+    தாரம் நி;
 */
+        // S R2 G3 M2 P D1 N2 S, S N2
+
+        பண் ப1 = new பண்();
+        சுரங்கள் இறங்குவரிசை1 = new சுரங்கள்();
+
+        இறங்குவரிசை1.ச = சுரங்கள்.குரல்.ச;
+        இறங்குவரிசை1.ரி = சுரங்கள்.துத்தம்.ரி2;
+        இறங்குவரிசை1.க = சுரங்கள்.கைக்கிளை.க3;
+        இறங்குவரிசை1.ம = சுரங்கள்.உழை.ம2;
+
+        இறங்குவரிசை1.ப = சுரங்கள்.இளி.ப;
+        இறங்குவரிசை1.த = சுரங்கள்.விளரி.த1;
+
+        இறங்குவரிசை1.நி = சுரங்கள்.தாரம்.நி2;
+        ப1.setஇறங்குவரிசை(இறங்குவரிசை1);
+
+        ப1.setஏறுவரிசை(இறங்குவரிசை1);
+
+        அச்சு(ப1) ;
+        அச்சு(ப1.இறங்குவரிசை.சுரங்களைபெறு("ரி").சுரத்தானம் );
         கீர்த்தனை  கீர்த்தனைமாறி  = gson.fromJson(கீர்த்தனை1, கீர்த்தனை.class);
         அச்சு(gson.toJson(கீர்த்தனைமாறி));
 
@@ -145,7 +169,9 @@ public class இயக்கு implements JMC {
         }
 
         அச்சு(கீர்த்தனைமாறி);
-        இசைகருவிஎண்ணியல்இடைமுகம்(கீர்த்தனைமாறி);
+        இசைகருவிஎண்ணியல்இடைமுகம்(கீர்த்தனைமாறி, ப1);
+
+
     }
 
 
@@ -238,8 +264,201 @@ public class இயக்கு implements JMC {
         }
         return String.valueOf(மத்திரை);
     }
+ private static void இசைகருவிஎண்ணியல்இடைமுகம்(கீர்த்தனை  கீர்த்தனைமாறி, பண் ப1) {
 
-    private static void இசைகருவிஎண்ணியல்இடைமுகம்(கீர்த்தனை  கீர்த்தனைமாறி) {
+        //Create the data objects we want to use
+        Score score ;//= new Score("Piano Phase", 120.0);
+        Part p1 = new Part("Piano1", PIANO, 0);
+       // Part p2 = new Part("Piano2", VIOLIN, 1);
+        Phrase phrase1 = new Phrase();
+        //Lets write the music in a convenient way.
+
+        Map<String, Integer> சுரம்ToNotes= new HashMap<>();
+/*
+        சுரம்ToNotes.put("ச" + "மத்திமம்" , C3);
+        சுரம்ToNotes.put("சா" + "மத்திமம்", C3);
+
+         சுரம்ToNotes.put("ச" + "மேல்" , C4);
+         சுரம்ToNotes.put("சா" + "மேல்", C4);
+
+        சுரம்ToNotes.put("ரி"  + "மத்திமம்", DS3);
+        சுரம்ToNotes.put("ரீ"  + "மத்திமம்", DS3);
+
+        சுரம்ToNotes.put("ரி"  + "மேல்", DS4);
+        சுரம்ToNotes.put("ரீ"  + "மேல்", DS4);
+
+
+        சுரம்ToNotes.put("க"  + "மத்திமம்", E3);
+        சுரம்ToNotes.put("கா" + "மத்திமம்", E3);
+
+
+        சுரம்ToNotes.put("க"  + "மேல்", E4);
+        சுரம்ToNotes.put("கா" + "மேல்", E4);
+
+
+        சுரம்ToNotes.put("ம" + "மத்திமம்", FS3);
+        சுரம்ToNotes.put("மா" + "மத்திமம்", FS3);
+        சுரம்ToNotes.put("ம" + "மேல்", FS4);
+        சுரம்ToNotes.put("மா" + "மேல்", FS4);
+
+
+
+        சுரம்ToNotes.put("ப" + "மத்திமம்", G3);
+        சுரம்ToNotes.put("பா"  + "மத்திமம்", G3);
+
+        சுரம்ToNotes.put("ப" + "மேல்", G4);
+        சுரம்ToNotes.put("பா" + "மேல்", G4);
+
+
+        சுரம்ToNotes.put("த" + "மத்திமம்", GS3);
+        சுரம்ToNotes.put("தா" + "மத்திமம்", GS3);
+
+        சுரம்ToNotes.put("த" + "மேல்", GS4);
+        சுரம்ToNotes.put("தா" + "மேல்", GS4);
+
+        சுரம்ToNotes.put("நி" + "மத்திமம்" , A3);
+        சுரம்ToNotes.put("நீ" + "மத்திமம்", A3);
+
+        சுரம்ToNotes.put("நி" + "மேல்", A4);
+        சுரம்ToNotes.put("நீ" + "மேல்", A4);
+
+
+ */
+
+        score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், 15 );
+        score.setTimeSignature(8, 8);
+
+        //score.setTimeSignature(8, 8);
+        குறிதயீடுகளைசுரங்களாகமாற்று(கீர்த்தனைமாறி.கீர்த்தனை);
+        for (பாடல்  பாடல்: கீர்த்தனைமாறி.கீர்த்தனை) {
+            String சுரம் = "ச";
+            double அக்சரகாலதசமஎண் = 0.1;
+            for (வரி வரி:  பாடல்.வரிகள்) {
+
+
+                // System.out.println("வரி" +  வரி);
+                List<எழுத்துவகை> சுரப்பட்டியல் = எழுத்து.பாகுபடுத்தி(வரி.சுரம்);
+
+
+                for(எழுத்துவகை சுர :சுரப்பட்டியல்) {
+                    if (சுர instanceof  குறியீடு) {
+
+                    } else {
+                        சுரம் = சுர.ஒருங்குறி + வரி.சுரவளவு;
+                    }
+                    பண் பண்மாறி = new பண்();
+
+                    சுரத்திலிருந்து(வரி, பண்மாறி);
+
+                    அச்சு("எளிமைசுரம்=" +  ப1.இறங்குவரிசை.சுரங்களைபெறு(வரி.எளிமைசுரம்) + ",எளிமைகாலம்= " + வரி.எளிமைகாலம்);
+                    if (வரி != null && வரி.எளிமைசுரம் != null && ப1.இறங்குவரிசை.சுரங்களைபெறு(வரி.எளிமைசுரம்) != null ) {
+
+                        int offset=0;
+                        if (வரி.சுரவளவு.equals("மேல்") ) {
+                            offset=12;
+                        }
+                        Note note1 = new Note(ப1.இறங்குவரிசை.சுரங்களைபெறு(வரி.எளிமைசுரம்).சுரத்தானம் + offset + C4 , வரி.எளிமைகாலம்);
+                        phrase1.add(note1);
+                    }
+
+                    /**
+                    if (சுரம்ToNotes.containsKey(சுரம்)) {
+                        Note note1 = new Note(சுரம்ToNotes.get(சுரம்), வரி.அக்சரகாலதசமஎண்);
+                        phrase1.add(note1);
+                    } else {
+                        அச்சு(சுரம் + " சுரம்ToNotes-ல் இல்லை");
+                    }*/
+                }
+
+
+            };
+
+        }
+
+
+        //add the notes to the first phrase
+        // Phrase phrase2 = (Phrase) phrase1.copy();
+        //Phrase phrase3 = (Phrase) phrase1.copy();
+        //Phrse four is played after the offset period
+        //Phrase phrase4 = (Phrase) phrase1.copy();
+
+        // repeat the sstable piano part and add it to a part and score
+       // Mod.repeat(phrase1, 8);
+       // Mod.repeat(phrase2, 8); // stable
+        //phrase2.setStartTime(0.0);
+        //Mod.repeat(phrase3, 24); // accellerate
+        //phrase3.setTempo(120. * (6. * 24.) / (6. * 24. - 1.));
+        //System.out.println("End time = " + phrase3.getEndTime());
+        //Mod.repeat(phrase4, 8); //stable again
+
+        // Phrase 3 is the one which extends phrase two at a different tempo
+       // phrase3.setStartTime(24.0);
+        //phrase4.setStartTime(32 * 3 - 1);
+        //Play different parts in different octaves for more audible clarity
+        // Mod.transpose(phrase2, 12);
+        // Mod.transpose(phrase3, 12);
+        //Mod.transpose(phrase4, 12);
+
+        //add phrases to the two instruments
+        p1.addPhrase(phrase1);
+
+        p1.setPan(0.9);
+        //add parts to the score
+        score.addPart(p1);
+
+        //OK now we SMF write
+        Write.midi(score, கீர்த்தனைமாறி.பெயர்+".mid"
+        );
+        // playback with JavaSound
+        Play.midi(score);
+
+    }
+
+    private static void சுரத்திலிருந்து(வரி வரி, பண் பண்மாறி) {
+        //பண்மாறி.இற்ங்குவரிசை()
+
+    }
+
+    private static void குறிதயீடுகளைசுரங்களாகமாற்று(List<பாடல்> கீர்த்தனை) {
+
+        கீர்த்தனை.forEach(பாடல் -> {
+            AtomicReference<வரி> கடைசிவரி = new AtomicReference<>();
+            List<வரி> புதியவரிகள் = new ArrayList<>();
+            பாடல்.வரிகள்.forEach(வரி -> {
+                        List<எழுத்துவகை> சுரப்பட்டியல் = எழுத்து.பாகுபடுத்தி(வரி.சுரம்);
+                வரி.setசுரங்கள்(சுரப்பட்டியல்);
+                        சுரப்பட்டியல்.forEach(எழுத்து -> {
+                            if (எழுத்து instanceof குறியீடு) {
+                                //அச்சு("குறியீடு எழுத்து=" + எழுத்து );
+
+                                switch (எழுத்து.ஒருங்குறி) {
+                                    case ";" :
+                                        கடைசிவரி.get().setஎளிமைகாலம்(கடைசிவரி.get().getஎளிமைகாலம்() + வரி.getகாலம்() );
+                                        break;
+                                    case "," :
+                                        கடைசிவரி.get().setஎளிமைகாலம்(கடைசிவரி.get().getஎளிமைகாலம்() + வரி.getகாலம்() );
+                                        break;
+                                }
+                            } else {
+
+                                    வரி.setஎளிமைசுரம்(எழுத்து.குறிலைப்பெறு().ஒருங்குறி);
+                                    வரி.setஎளிமைகாலம்(வரி.getகாலம்());
+                                    if (கடைசிவரி.get() != null) {
+                                        புதியவரிகள்.add(கடைசிவரி.get());
+                                    }
+                                    கடைசிவரி.set(வரி);
+                            }
+                        });
+
+
+            });
+
+            //அச்சு("புதியவரிகள்=" + புதியவரிகள்);
+        });
+
+    }
+
+    private static void இசைகருவிஎண்ணியல்இடைமுகம்V1(கீர்த்தனை  கீர்த்தனைமாறி) {
 
         //Create the data objects we want to use
         Score score ;//= new Score("Piano Phase", 120.0);
@@ -297,7 +516,7 @@ public class இயக்கு implements JMC {
         சுரம்ToNotes.put("நி" + "மேல்", A4);
         சுரம்ToNotes.put("நீ" + "மேல்", A4);
 
-        score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், 15 );
+        score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், 120 );
         score.setTimeSignature(8, 8);
 
         //score.setTimeSignature(8, 8);
