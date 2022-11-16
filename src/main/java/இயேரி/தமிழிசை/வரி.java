@@ -3,6 +3,7 @@ package இயேரி.தமிழிசை;
 import java.util.List;
 
 public class வரி {
+
     String சுரம்;
     String சுரவளவு;
     String சுரகாலளவு;

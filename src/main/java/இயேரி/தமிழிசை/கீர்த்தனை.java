@@ -2,7 +2,7 @@ package இயேரி.தமிழிசை;
 
 import java.util.List;
 
-public class கீர்த்தனை {
+public class கீர்த்தனை  {
     String வகை;
     String இயற்றியவர்;
     String இராகம்;
