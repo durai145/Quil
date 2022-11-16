@@ -418,6 +418,10 @@ public class சுரங்கள் {
             சுரப்பதட்டியல்.add(ம.சுரம்);
         }
 
+        if (Objects.nonNull(ப)) {
+            சுரப்பதட்டியல்.add(ப.சுரம்);
+        }
+
         if (Objects.nonNull(த)) {
             சுரப்பதட்டியல்.add(த.சுரம்);
         }
@@ -443,6 +447,10 @@ public class சுரங்கள் {
         }
         if (Objects.nonNull(ம)) {
             சுரப்பதட்டியல்.put("ம",ம.சுரம்);
+        }
+
+        if (Objects.nonNull(ப)) {
+            சுரப்பதட்டியல்.put("ப",ப.சுரம்);
         }
 
         if (Objects.nonNull(த)) {
