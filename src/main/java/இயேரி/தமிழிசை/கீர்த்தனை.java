@@ -7,12 +7,12 @@ public class கீர்த்தனை  {
     String இயற்றியவர்;
     String இராகம்;
     String தாளம்;
-    String பண்;
-    String பாணி;
+     பண் பண்;
     String மேளக்கர்த்தாஎண்;
     List<பாடல்> கீர்த்தனை;
     String பெயர்;
 
+    பாணி பாணி;
 
     @Override
     public String toString() {

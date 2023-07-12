@@ -20,7 +20,18 @@ public final class Kit implements JMC{
 
         //Let us know things have started
         System.out.println("Creating drum patterns . . .");
+         பாணி பாணி= new பாணி.மட்டியம்(இயேரி.தமிழிசை.பாணி.லகு.I5, இயேரி.தமிழிசை.பாணி.நடைஎண்.I9);
 
+         பாணி.பெறு().forEach( பிரிவு->{
+             System.out.println(பிரிவு.மதிப்பு);
+         });
+
+        பாணி.நடையைபெறு().forEach( மதிப்பு->{
+            System.out.println(மதிப்பு);
+        });
+
+
+        System.out.println( பாணி.நடைகளைபெறு());
         // make bass drum
         for(int i=0;i<4;i++){
             Note note = new Note(36, C);
