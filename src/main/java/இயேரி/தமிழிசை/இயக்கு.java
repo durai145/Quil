@@ -30,6 +30,13 @@ public class இயக்கு implements JMC {
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .setPrettyPrinting()
             .create();
+    static எழுத்துவகை ச  = எழுத்து.பாகுபடுத்து("ச");
+    static எழுத்துவகை ரி  = எழுத்து.பாகுபடுத்து("ரி");
+    static எழுத்துவகை க  = எழுத்து.பாகுபடுத்து("க");
+    static எழுத்துவகை ம  = எழுத்து.பாகுபடுத்து("ம");
+    static எழுத்துவகை ப  = எழுத்து.பாகுபடுத்து("ப");
+    static எழுத்துவகை த  = எழுத்து.பாகுபடுத்து("த");
+    static எழுத்துவகை நி  = எழுத்து.பாகுபடுத்து("நி");
 
 
     static  String கீர்த்தனை1 = "  {\n" +
@@ -40,12 +47,13 @@ public class இயக்கு implements JMC {
             "  \t\"பண்\" : \"ரிஷபப்பிரியா\",\n" +
             "  \t\"பாணி\" : \"எட்டொத்து\",\n" +
             "  \t\"மேளக்கர்த்தாஎண்\" : 62,\n" +
+            "  \t\"பெயர்\" : \"அம்பரசிதம்\",\n" +
             "  \t\"கீர்த்தனை\": [{\n" +
             "  \t\t\"தலைப்பு\" : \"பல்லவி\",\n" +
             "  \t\t\"வரிகள்\" :[ \n" +
             "  \t\t\t\t{ \"சுரம்\" : \"சா\" , \"வார்த்தை\" : \"அம்\", \t\t\"சுரவளவு\" : \"மேல்\",   \t\"சுரகாலளவு\" : 2, \t\"அக்சரகாலம்\" : \"1/2\"},\n" +
             "  \t\t\t\t{ \"சுரம்\" : \"சா\" , \"வார்த்தை\" : \"ப\",  \t\t\"சுரவளவு\" : \"மேல்\", \t \t\"சுரகாலளவு\" : 2, \t\"அக்சரகாலம்\" : \"1/2\"},\n" +
-            "  \t\t\t\t{ \"சுரம்\" : \"ச\"  , \"வார்த்தை\" : \"ர\",   \t\"சுரவளவு\" : \"மத்திமம்\", \t\"சுரகாலளவு\" : 1, \t\"அக்சரகாலம்\" : \"1/2\"},\n" +
+            "  \t\t\t\t{ \"சுரம்\" : \"ச\"  , \"வார்த்தை\" : \"ர\",   \t\"சுரவளவு\" : \"மேல்\", \t\"சுரகாலளவு\" : 1, \t\"அக்சரகாலம்\" : \"1/2\"},\n" +
             "  \t\t\t\t{ \"சுரம்\" : \"நி\"  , \"வார்த்தை\" : \".\",   \t\"சுரவளவு\" : \"மத்திமம்\", \t\"சுரகாலளவு\" : 1, \t\"அக்சரகாலம்\" : \"1/2\"},\n" +
             "  \t\t\t\t{ \"சுரம்\" : \"நீ\"  , \"வார்த்தை\" : \".\",   \t\"சுரவளவு\" : \"மத்திமம்\", \t\"சுரகாலளவு\" : 2, \t\"அக்சரகாலம்\" : \"1/2\"},\n" +
             "  \t\t\t\t\n" +
@@ -131,11 +139,11 @@ public class இயக்கு implements JMC {
 
 
 
-        File f = new File("/Users/durai/Google Drive/கீர்த்தனைகள்/அம்பரசிதம்பரசதானந்தமே.json");
-        FileInputStream fio = new FileInputStream(f);
-        byte[] as = fio.readAllBytes();
+      //  File f = new File("/Users/durai/Google Drive/கீர்த்தனைகள்/அம்பரசிதம்பரசதானந்தமே.json");
+       // FileInputStream fio = new FileInputStream(f);
+       // byte[] as = fio.readAllBytes();
 
-        கீர்த்தனை  கீர்த்தனைமாறி  = gson.fromJson(new String(as), கீர்த்தனை.class);
+        கீர்த்தனை  கீர்த்தனைமாறி  = gson.fromJson(new String(கீர்த்தனை1), கீர்த்தனை.class);
         அச்சு(gson.toJson(கீர்த்தனைமாறி));
 
         try {
@@ -250,55 +258,67 @@ public class இயக்கு implements JMC {
 
         Map<String, Integer> சுரம்ToNotes= new HashMap<>();
 
-        சுரம்ToNotes.put("ச" + "மத்திமம்" , C3);
-        சுரம்ToNotes.put("சா" + "மத்திமம்", C3);
+        int offset=C4-C3;
 
-         சுரம்ToNotes.put("ச" + "மேல்" , C4);
-         சுரம்ToNotes.put("சா" + "மேல்", C4);
+       Map<எழுத்துவகை, Integer>  சுரஙள் = சுரங்களைபெறு(கீர்த்தனைமாறி.மேளக்கர்த்தாஎண் );
 
-        சுரம்ToNotes.put("ரி"  + "மத்திமம்", DS3);
-        சுரம்ToNotes.put("ரீ"  + "மத்திமம்", DS3);
+       அச்சு(சுரஙள்);
 
-        சுரம்ToNotes.put("ரி"  + "மேல்", DS4);
-        சுரம்ToNotes.put("ரீ"  + "மேல்", DS4);
+        சுரம்ToNotes.put(ச.toString() + "மத்திமம்" , சுரஙள்.get(ச) + offset);
+        சுரம்ToNotes.put(ச.நெடிலைப்பெறு() + "மத்திமம்", சுரஙள்.get(ச) + offset);
 
+         சுரம்ToNotes.put(ச+ "மேல்" ,  சுரஙள்.get(ச)  +offset*2);
+         சுரம்ToNotes.put(ச.நெடிலைப்பெறு() +  "மேல்",  சுரஙள்.get(ச) +offset*2);
 
-        சுரம்ToNotes.put("க"  + "மத்திமம்", E3);
-        சுரம்ToNotes.put("கா" + "மத்திமம்", E3);
+        சுரம்ToNotes.put(ரி  + "மத்திமம்", சுரஙள்.get(ரி) +offset);
+        சுரம்ToNotes.put(ரி.நெடிலைப்பெறு()  + "மத்திமம்", சுரஙள்.get(ரி) +offset);
 
-
-        சுரம்ToNotes.put("க"  + "மேல்", E4);
-        சுரம்ToNotes.put("கா" + "மேல்", E4);
+        சுரம்ToNotes.put(ரி + "மேல்", சுரஙள்.get(ரி)+offset*2);
+        சுரம்ToNotes.put(ரி  + "மேல்", சுரஙள்.get(ரி)+offset*2);
 
 
-        சுரம்ToNotes.put("ம" + "மத்திமம்", FS3);
-        சுரம்ToNotes.put("மா" + "மத்திமம்", FS3);
-        சுரம்ToNotes.put("ம" + "மேல்", FS4);
-        சுரம்ToNotes.put("மா" + "மேல்", FS4);
+        சுரம்ToNotes.put(க  + "மத்திமம்",  சுரஙள்.get(க)+offset);
+        சுரம்ToNotes.put(க.நெடிலைப்பெறு() + "மத்திமம்", சுரஙள்.get(க)+offset);
+
+
+        சுரம்ToNotes.put(க  + "மேல்", சுரஙள்.get(க)+ offset*2);
+        சுரம்ToNotes.put(க.நெடிலைப்பெறு() + "மேல்", சுரஙள்.get(க)+offset*2);
+
+
+        சுரம்ToNotes.put(ம + "மத்திமம்", சுரஙள்.get(ம)+offset);
+        சுரம்ToNotes.put(ம.நெடிலைப்பெறு() + "மத்திமம்", சுரஙள்.get(ம)+ offset);
+        சுரம்ToNotes.put(ம + "மேல்", சுரஙள்.get(ம)+offset*2);
+        சுரம்ToNotes.put(ம.நெடிலைப்பெறு() + "மேல்", சுரஙள்.get(ம)+offset*2);
 
 
 
-        சுரம்ToNotes.put("ப" + "மத்திமம்", G3);
-        சுரம்ToNotes.put("பா"  + "மத்திமம்", G3);
+        சுரம்ToNotes.put(ப + "மத்திமம்", சுரஙள்.get(ப)+offset);
+        சுரம்ToNotes.put(ப.நெடிலைப்பெறு()  + "மத்திமம்", சுரஙள்.get(ப)+offset);
 
-        சுரம்ToNotes.put("ப" + "மேல்", G4);
-        சுரம்ToNotes.put("பா" + "மேல்", G4);
+        சுரம்ToNotes.put(ப + "மேல்", சுரஙள்.get(ப)+offset*2);
+        சுரம்ToNotes.put(ப.நெடிலைப்பெறு() + "மேல்", சுரஙள்.get(ப)+offset*2);
+
+        சுரம்ToNotes.put(ப  + "கீழ்", சுரஙள்.get(ப)+offset*(-1));
+        சுரம்ToNotes.put(ப.நெடிலைப்பெறு()  + "கீழ்", சுரஙள்.get(ப)+offset*(-1));
 
 
-        சுரம்ToNotes.put("த" + "மத்திமம்", GS3);
-        சுரம்ToNotes.put("தா" + "மத்திமம்", GS3);
+        சுரம்ToNotes.put(த + "மத்திமம்", சுரஙள்.get(த)+offset);
+        சுரம்ToNotes.put(த.நெடிலைப்பெறு() + "மத்திமம்", சுரஙள்.get(த)+offset);
 
-        சுரம்ToNotes.put("த" + "மேல்", GS4);
-        சுரம்ToNotes.put("தா" + "மேல்", GS4);
+        சுரம்ToNotes.put(த + "மேல்", சுரஙள்.get(த)+offset*2);
+        சுரம்ToNotes.put(த.நெடிலைப்பெறு() + "மேல்", சுரஙள்.get(த)+offset*2);
 
-        சுரம்ToNotes.put("நி" + "மத்திமம்" , A3);
-        சுரம்ToNotes.put("நீ" + "மத்திமம்", A3);
+        சுரம்ToNotes.put(நி + "மத்திமம்" , சுரஙள்.get(நி)+offset);
+        சுரம்ToNotes.put(நி.நெடிலைப்பெறு() + "மத்திமம்", சுரஙள்.get(நி)+offset);
 
-        சுரம்ToNotes.put("நி" + "மேல்", A4);
-        சுரம்ToNotes.put("நீ" + "மேல்", A4);
+        சுரம்ToNotes.put(நி + "மேல்",  சுரஙள்.get(நி)+offset*2);
+        சுரம்ToNotes.put(நி+ "மேல்",  சுரஙள்.get(நி)+offset*2);
 
-        score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், 15 );
-        score.setTimeSignature(8, 8);
+        சுரம்ToNotes.put(நி + "கீழ்",  சுரஙள்.get(நி)+offset*(-1));
+        சுரம்ToNotes.put(நி+ "கீழ்",  சுரஙள்.get(நி)+offset*(-1));
+
+        score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், 40 );
+        //score.setTimeSignature(8, 8);
 
         score.setTimeSignature(8, 8);
 
@@ -319,7 +339,7 @@ public class இயக்கு implements JMC {
                         சுரம் = சுர.ஒருங்குறி + வரி.சுரவளவு;
                     }
                     if (சுரம்ToNotes.containsKey(சுரம்)) {
-                        Note note1 = new Note(சுரம்ToNotes.get(சுரம்), வரி.அக்சரகாலதசமஎண்);
+                        Note note1 = new Note(சுரம்ToNotes.get(சுரம்), வரி.காலம்);
                         phrase1.add(note1);
                     } else {
                         அச்சு(சுரம் + " சுரம்ToNotes-ல் இல்லை");
@@ -363,10 +383,116 @@ public class இயக்கு implements JMC {
         score.addPart(p1);
 
         //OK now we SMF write
-        Write.midi(score, கீர்த்தனைமாறி.பெயர்+".mid"
+        Write.midi(score, கீர்த்தனைமாறி.பெயர்+"2.mid"
         );
         // playback with JavaSound
         Play.midi(score);
+
+    }
+
+    private static Map<எழுத்துவகை, Integer> சுரங்களைபெறு(String மேளக்கர்த்தாஎண்) {
+
+        Map<எழுத்துவகை, Integer> மேளக்கர்த்தா =new HashMap<>();
+
+        double மேளக்கர்த்தாதசமஎண் = Double.parseDouble(மேளக்கர்த்தாஎண்);
+        மேளக்கர்த்தா.put(ச, C3);
+        மேளக்கர்த்தா.put(ப, G3);
+        if (மேளக்கர்த்தாதசமஎண் >36)  {
+            மேளக்கர்த்தா.put(ம, FS3);
+            மேளக்கர்த்தாதசமஎண் = மேளக்கர்த்தாதசமஎண்-36;
+        } else {
+            மேளக்கர்த்தா.put(ம, F3);
+
+        }
+
+        double lrg= மேளக்கர்த்தாதசமஎண்;
+
+        if((lrg>=7 )&& ( lrg<=12))
+        {
+            மேளக்கர்த்தா.put(ரி, CS3);//ri=1;
+            மேளக்கர்த்தா.put(க, DS3);//ga=2;
+        }
+        else if(lrg>=13 &&  lrg<=18)
+        {
+            மேளக்கர்த்தா.put(ரி, CS3);//ri=1;
+            மேளக்கர்த்தா.put(க, E3);//ga=3;
+        }
+        else if(lrg>=19 &&  lrg<=24)
+        {
+            //ri=2;
+            //ga=2;
+            மேளக்கர்த்தா.put(ரி, D3);//ri=2;
+            மேளக்கர்த்தா.put(க, DS3);//ga=2;
+        }
+        else if(lrg>=25 &&  lrg<=30)
+        {
+            //ri=2;
+            //ga=3;
+            மேளக்கர்த்தா.put(ரி, D3);
+            மேளக்கர்த்தா.put(க, E3);
+        }
+        else if(lrg>=31 &&  lrg<=36)
+        {
+            //ri=3;
+            //ga=3;
+            மேளக்கர்த்தா.put(ரி, DS3);
+            மேளக்கர்த்தா.put(க, E3);
+        }
+        else if(lrg>=1 &&  lrg<=6)
+        {
+            //ri=1;
+            //ga=1;
+            மேளக்கர்த்தா.put(ரி, CS3);
+            மேளக்கர்த்தா.put(க, D3);
+        }
+
+        lrg= மேளக்கர்த்தாதசமஎண் %6;
+        if(lrg ==1)
+        {
+            //da=1;
+            //nee=1;
+            மேளக்கர்த்தா.put(த, GS3);
+            மேளக்கர்த்தா.put(நி, A3);
+        }
+        else if(lrg ==2)
+        {
+            //da=1;
+            //nee=2;
+            மேளக்கர்த்தா.put(த, GS3);
+            மேளக்கர்த்தா.put(நி, AS3);
+        }
+        else if(lrg ==3)
+        {
+            //da=1;
+            //nee=3;
+            மேளக்கர்த்தா.put(த, GS3);
+            மேளக்கர்த்தா.put(நி, B3);
+
+        }
+        else if(lrg == 4 )
+        {
+           // da=2;
+           // nee=2;
+            மேளக்கர்த்தா.put(த, A3);
+            மேளக்கர்த்தா.put(நி, AS3);
+        }
+        else if(lrg == 5 )
+        {
+           // da=2;
+            // nee=3;
+            மேளக்கர்த்தா.put(த, A3);
+            மேளக்கர்த்தா.put(நி, B3);
+        }
+        else if(lrg == 0 )
+        {
+           // da=3;
+            // nee=3;
+            மேளக்கர்த்தா.put(த, AS3);
+            மேளக்கர்த்தா.put(நி, B3);
+        }
+
+        return  மேளக்கர்த்தா;
+
 
     }
 }
