@@ -317,7 +317,7 @@ public class இயக்கு implements JMC {
         சுரம்ToNotes.put(நி + "கீழ்",  சுரஙள்.get(நி)+offset*(-1));
         சுரம்ToNotes.put(நி+ "கீழ்",  சுரஙள்.get(நி)+offset*(-1));
 
-        score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், 40 );
+        score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், 120 );
         //score.setTimeSignature(8, 8);
 
         score.setTimeSignature(8, 8);
