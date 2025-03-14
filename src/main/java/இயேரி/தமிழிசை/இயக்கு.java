@@ -47,6 +47,7 @@ public class இயக்கு implements JMC {
             "  \t\"பண்\" : \"ரிஷபப்பிரியா\",\n" +
             "  \t\"பாணி\" : \"எட்டொத்து\",\n" +
             "  \t\"மேளக்கர்த்தாஎண்\" : 62,\n" +
+            "  \t\"இசையின்வேகம்\" : 15,\n" +
             "  \t\"பெயர்\" : \"அம்பரசிதம்\",\n" +
             "  \t\"கீர்த்தனை\": [{\n" +
             "  \t\t\"தலைப்பு\" : \"பல்லவி\",\n" +
@@ -174,6 +175,11 @@ public class இயக்கு implements JMC {
         if (வெற்றிடமா(கீர்த்தனைமாறி.மேளக்கர்த்தாஎண்)) {
             throw  new சரிபாத்தலில்விலக்கு("மேளக்கர்த்தாஎண் இன்றியமையாதது");
         }
+
+        if (வெற்றிடமா(கீர்த்தனைமாறி.இசையின்வேகம்)) {
+            throw  new சரிபாத்தலில்விலக்கு("இசையின்வேகம் இன்றியமையாதது");
+        }
+
 
         for(பாடல் பாடல் : கீர்த்தனைமாறி.கீர்த்தனை) {
 
@@ -317,7 +323,7 @@ public class இயக்கு implements JMC {
         சுரம்ToNotes.put(நி + "கீழ்",  சுரஙள்.get(நி)+offset*(-1));
         சுரம்ToNotes.put(நி+ "கீழ்",  சுரஙள்.get(நி)+offset*(-1));
 
-        score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், 120 );
+        score = new Score(கீர்த்தனைமாறி.இராகம் + "-" + கீர்த்தனைமாறி.இயற்றியவர், Double.parseDouble(கீர்த்தனைமாறி.இசையின்வேகம்));
         //score.setTimeSignature(8, 8);
 
         score.setTimeSignature(8, 8);
@@ -382,15 +388,15 @@ public class இயக்கு implements JMC {
         //add parts to the score
         score.addPart(p1);
 
-        //OK now we SMF write
-        Write.midi(score, கீர்த்தனைமாறி.பெயர்+"2.mid"
+        //OK now we SMF write=
+        Write.midi(score, கீர்த்தனைமாறி.பெயர்+ "_" + கீர்த்தனைமாறி.இராகம் + "_"+ கீர்த்தனைமாறி.மேளக்கர்த்தாஎண் +"_"+ கீர்த்தனைமாறி.இசையின்வேகம்+ ".mid"
         );
         // playback with JavaSound
         Play.midi(score);
 
     }
 
-    private static Map<எழுத்துவகை, Integer> சுரங்களைபெறு(String மேளக்கர்த்தாஎண்) {
+    public static Map<எழுத்துவகை, Integer> சுரங்களைபெறு(String மேளக்கர்த்தாஎண்) {
 
         Map<எழுத்துவகை, Integer> மேளக்கர்த்தா =new HashMap<>();
 
