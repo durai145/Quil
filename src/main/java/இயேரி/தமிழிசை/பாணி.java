@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public abstract class பாணி {
+    String பெயர்;
      பாணி.நடைஎண் நடைஎண்மாறி;
 
 
@@ -224,6 +225,7 @@ public abstract class பாணி {
     static லகு லகு;
 
     பாணி(லகு லகு,நடைஎண் நடைஎண்மாறி) {
+        பெயர் = this.getClass().getSimpleName();
         this.லகு = லகு;
         this.நடைஎண்மாறி = நடைஎண்மாறி;
     }
@@ -250,6 +252,7 @@ public abstract class பாணி {
 
 
     public static class துருவம் extends பாணி {
+
         லகு I1;
         சுழி O2;
         லகு I3;
@@ -265,9 +268,13 @@ public abstract class பாணி {
 
         துருவம்(லகு லகு, நடைஎண் நடைஎண்மாறி) {
             super(லகு, நடைஎண்மாறி);
-
+            this.I1= லகு;
+            this.O2= சுழி.O;
+            this.I3= லகு;
+            this.I4= லகு;
         }
 
+        @Override
         public List<பிரிவு> பெறு() {
             List<பிரிவு> துருவபாணி = new ArrayList<>();
             துருவபாணி.add(I1.பிரிவு);

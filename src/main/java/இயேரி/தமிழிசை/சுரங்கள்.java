@@ -336,7 +336,7 @@ public class சுரங்கள் {
         return ச;
     }
 
-    public void setச(குரல் ச) {
+    public void சவைப்பிடி(குரல் ச) {
         this.ச = ச;
     }
 
@@ -344,7 +344,7 @@ public class சுரங்கள் {
         return ரி;
     }
 
-    public void setரி(துத்தம் ரி) {
+    public void ரியைப்பிடி(துத்தம் ரி) {
         this.ரி = ரி;
     }
 
@@ -352,7 +352,7 @@ public class சுரங்கள் {
         return க;
     }
 
-    public void setக(கைக்கிளை க) {
+    public void கவைப்பிடி(கைக்கிளை க) {
         if (this.ரி == துத்தம்.ரி3 && க != கைக்கிளை.க3
                 ||  this.ரி == துத்தம்.ரி2  &&  க != கைக்கிளை.க2 &&  க != கைக்கிளை.க3 ) {
             throw new RuntimeException(this.ரி  + " மற்றும் " + க  +" பகை சுரஙள் " );
@@ -364,7 +364,7 @@ public class சுரங்கள் {
         return ம;
     }
 
-    public void setம(உழை ம) {
+    public void மவைப்பிடி(உழை ம) {
         this.ம = ம;
     }
 
@@ -372,7 +372,7 @@ public class சுரங்கள் {
         return ப;
     }
 
-    public void setப(இளி ப) {
+    public void பவைப்பிடி(இளி ப) {
         this.ப = ப;
     }
 
@@ -380,7 +380,7 @@ public class சுரங்கள் {
         return த;
     }
 
-    public void setத(விளரி த) {
+    public void தவைப்பிடி(விளரி த) {
         this.த = த;
     }
 
@@ -388,7 +388,7 @@ public class சுரங்கள் {
         return நி;
     }
 
-    public void setநி(தாரம் நி) {
+    public void நியைப்பிடி(தாரம் நி) {
         if (this.த ==  விளரி.த3 &&  நி != தாரம்.நி3  ||  this.த ==  விளரி.த2 && நி != தாரம்.நி2  && நி != தாரம்.நி3  ) {
             throw new RuntimeException(this.த  + " மற்றும் " + நி  +" பகை சுரஙள் " );
         }
@@ -401,7 +401,7 @@ public class சுரங்கள் {
     }
 
 
-    List<சுரங்கள்V2.சுரம்> getசுரம்() {
+    List<சுரங்கள்V2.சுரம்> சுரத்தைபெறு() {
         List<சுரங்கள்V2.சுரம்> சுரப்பதட்டியல்=new ArrayList<>();
         if (Objects.nonNull(ச)) {
             சுரப்பதட்டியல்.add(ச.சுரம்);
@@ -432,7 +432,7 @@ public class சுரங்கள் {
         return சுரப்பதட்டியல்;
     }
 
-    Map<String,சுரங்கள்V2.சுரம்> getMapசுரம்() {
+    Map<String,சுரங்கள்V2.சுரம்> விசைமதிப்புவரைபடசுரத்தைபெறு() {
         Map<String, சுரங்கள்V2.சுரம்> சுரப்பதட்டியல்=new HashMap<>();
         if (Objects.nonNull(ச)) {
             சுரப்பதட்டியல்.put("ச", ச.சுரம்);
@@ -464,7 +464,7 @@ public class சுரங்கள் {
     }
 
      சுரங்கள்V2.சுரம் சுரங்களைபெறு(String சுரம்) {
-         return getMapசுரம்().get(சுரம்);
+         return விசைமதிப்புவரைபடசுரத்தைபெறு().get(சுரம்);
     }
 
     @Override
@@ -477,6 +477,6 @@ public class சுரங்கள் {
                 ", ப=" + ப+
                 ", த=" + த+
                 ", நி="+  நி+
-                "}, சுரப்பட்டியல்="+ getசுரம்();
+                "}, சுரப்பட்டியல்="+ சுரத்தைபெறு();
     }
 }
